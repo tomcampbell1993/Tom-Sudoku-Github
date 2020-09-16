@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -94,7 +96,7 @@ void printSudoku() {
 
 void setCellValue(int x, int y, int newValue) {
 
-	cout << "Cell at coordinates " << x << "," << y << "set to value " << newValue << endl;
+	cout << "Cell at coordinates " << x << "," << y << " set to value " << newValue << endl;
 
 	for (int i = 0; i < 81; i++) {
 		if (cells[i].x == x && cells[i].y == y) {
@@ -102,7 +104,6 @@ void setCellValue(int x, int y, int newValue) {
 		}
 	}
 }
-
 
 int insertX() {
 	int x;
@@ -220,6 +221,36 @@ void checkAllRowsAndColumns() {
 
 }
 
+void importFile(string fileName) {
+
+	cout << "Importing file with filename: " << fileName << endl;
+
+	string line;
+	ifstream importFile(fileName);
+	if (importFile.is_open()) {
+
+		while (getline(importFile, line)) {
+			cout << line << endl;
+			string sx, sy, sz;
+			sx = line[0];
+			sy = line[1];
+			sz = line[2];
+
+			int x, y, z;
+			x = stoi(sx);
+			y = stoi(sy);
+			z = stoi(sz);
+
+			setCellValue(x, y, z);
+		}
+		importFile.close();
+	}
+	else {
+		cout << "failed to import file :( " << endl;
+	}
+
+}
+
 void navigation() {
 
 	cout << "To print the soduko enter the value '1' " << endl;
@@ -227,6 +258,7 @@ void navigation() {
 	cout << "To check a row, enter the value '3' " << endl;
 	cout << "To check a column, enter the value '4' " << endl;
 	cout << "To check all rows and columns, enter the value '5' " << endl;
+	cout << "To Import a text file, enter the value '6' " << endl;
 	cout << "To exit enter any other value " << endl;
 
 	int x;
@@ -269,6 +301,18 @@ void navigation() {
 		checkAllRowsAndColumns();
 		cout << endl;
 		cout << "Check complete." << endl;
+		navigation();
+	}
+
+	if (x == 6) {
+		cout << "Text file must be in the form of a list of three integers per line, example: " << endl;
+		cout << "123" << endl;
+		cout << "123" << endl;
+		cout << " Values in order left to right are: X coord, Y coord and cell value" << endl;
+		cout << "Type the name of file to import: " << endl;
+		string file;
+		cin >> file;
+		importFile(file);
 		navigation();
 	}
 

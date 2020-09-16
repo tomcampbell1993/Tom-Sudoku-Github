@@ -1,1 +1,3 @@
-﻿  Tom Soduko Github.vcxproj -> C:\Users\tomca\OneDrive\Desktop\Thomas\Sudoku Github\Tom-Sudoku-Github\Tom Soduko Github\Debug\Tom Soduko Github.exe
+﻿  Main.cpp
+C:\Users\tomca\OneDrive\Desktop\Thomas\Sudoku Github\Tom-Sudoku-Github\Tom Soduko Github\Tom Soduko Github\Main.cpp(323,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Tom Soduko Github.vcxproj -> C:\Users\tomca\OneDrive\Desktop\Thomas\Sudoku Github\Tom-Sudoku-Github\Tom Soduko Github\Debug\Tom Soduko Github.exe
